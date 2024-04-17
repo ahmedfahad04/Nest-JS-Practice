@@ -8,7 +8,7 @@ export class AuthController {
     constructor(private authService: AuthService) { }
 
     @Post('/login')
-    @UseGuards(AuthGuard('local'))
+    @UseGuards(AuthGuard('local'))      //! what does Guards do??
     async login(@Request() req: any) {
         return this.authService.login(req.user);
     }

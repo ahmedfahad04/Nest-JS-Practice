@@ -6,6 +6,7 @@ import { Product } from "./product/entity/product.entity";
 import { ProductModule } from "./product/product.module";
 import { User } from "./user/entity/user.entity";
 import { UserModule } from './user/user.module';
+import { ProfileModule } from './profile/profile.module';
 
 
 @Module({
@@ -18,7 +19,7 @@ import { UserModule } from './user/user.module';
         database: 'basic_nestjs',
         entities: [Product, User],  //! must add the new Entity 
         synchronize: true,          //! before production, it MUST be REMOVED
-    }), AuthModule],
+    }), AuthModule, ProfileModule],
     controllers: [AppController]
 })
 export class AppModule { }
