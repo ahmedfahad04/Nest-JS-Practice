@@ -8,7 +8,10 @@ import { Product } from './entity/product.entity';
 export class ProductService {
 
     //! this is how we connect db with service (it's like the repository we used in express)
-    constructor(@InjectRepository(Product) private productRepository: Repository<Product>) { }
+    constructor(
+        @InjectRepository(Product)
+        private productRepository: Repository<Product>
+    ) { }
 
 
     getProductDetails(): Promise<Product[]> {
@@ -21,8 +24,8 @@ export class ProductService {
         })
     }
 
-    createProduct(createProductDTO: CreateProductDto) {
-        return this.productRepository.save(createProductDTO)
+    createProduct(productDTO: CreateProductDto) {
+        return this.productRepository.save(productDTO)
     }
 
     updateProduct(productDTO: CreateProductDto, productId: number) {
