@@ -3,7 +3,7 @@ import { IsNumber, IsString } from "class-validator";
 export class CreateProductDto {
 
     @IsString()
-    product: string;
+    name: string;
 
     @IsNumber()
     quantity: number;
