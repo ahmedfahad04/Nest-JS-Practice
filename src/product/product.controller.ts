@@ -1,5 +1,6 @@
-import { Controller, Delete, Get, Param, Patch, Post, Req } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Req } from "@nestjs/common";
 import { Request } from "express";
+import { CreateProductDto } from "./dto/product-create.dto";
 import { ProductService } from "./product.service";
 
 @Controller('/product')
@@ -12,9 +13,11 @@ export class ProductController {
         return this.productService.getProductDetails();
     }
 
+    // we can use @Body to get ony the Body and in such case we need DTO
+    // using DTO we can mention actually which 'fields' should I consider
     @Post()
-    addProduct(@Req() req: Request) {
-        return this.productService.createProduct(req);
+    addProduct(@Body() createProductDTO: CreateProductDto) {
+        return this.productService.createProduct(createProductDTO);
     }
 
     @Get('/:productId')

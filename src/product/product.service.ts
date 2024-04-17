@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Request } from 'express';
+import { CreateProductDto } from './dto/product-create.dto';
 
 @Injectable()
 export class ProductService {
@@ -11,8 +12,8 @@ export class ProductService {
         return param
     }
 
-    createProduct(req: Request) {
-        return req.body
+    createProduct(createProductDTO: CreateProductDto) {
+        return createProductDTO
     }
 
     updateProduct(req: Request, param: { productId: number }) {
