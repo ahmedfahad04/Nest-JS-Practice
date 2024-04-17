@@ -8,20 +8,20 @@ export class ProductService {
         return { name: "Bottle", amount: '10 pcs' }
     }
 
-    findProduct(param: { productId: Number }) {
-        return param
+    findProduct(productId: number) {
+        return { productId }
     }
 
     createProduct(createProductDTO: CreateProductDto) {
         return createProductDTO
     }
 
-    updateProduct(req: Request, param: { productId: number }) {
-        console.log("REQ: ", req.body, param)
-        return { body: req.body, param }
+    updateProduct(req: Request, productId: number) {
+        console.log("REQ: ", req.body, productId)
+        return { body: req.body, productId }
     }
 
-    deleteProduct(param: { productId: Number }) {
-        return param
+    deleteProduct(productId: number) {
+        return productId
     }
 }

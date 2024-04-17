@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Req } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req } from "@nestjs/common";
 import { Request } from "express";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { ProductService } from "./product.service";
@@ -21,17 +21,17 @@ export class ProductController {
     }
 
     @Get('/:productId')
-    getSingleProduct(@Param() param: { productId: Number }) {
-        return this.productService.findProduct(param);
+    getSingleProduct(@Param('productId', ParseIntPipe) productId: number) {     //! this ParseIntPipe is also validating our data to be only Integer
+        return this.productService.findProduct(productId);
     }
 
     @Delete('/:productId')
-    removeProduct(@Param() param: { productId: Number }) {
-        return this.productService.deleteProduct(param)
+    removeProduct(@Param('productId', ParseIntPipe) productId: number) {
+        return this.productService.deleteProduct(productId)
     }
 
     @Patch('/:productId')
-    updateProduct(@Req() req: Request, @Param() param: { productId: number }) {
-        return this.productService.updateProduct(req, param)
+    updateProduct(@Req() req: Request, @Param('productId', ParseIntPipe) productId: number) {
+        return this.productService.updateProduct(req, productId)
     }
 }
