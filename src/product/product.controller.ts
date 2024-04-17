@@ -1,4 +1,5 @@
 import { Controller, Delete, Get, Param, Patch, Post, Req } from "@nestjs/common";
+import { Request } from "express";
 import { ProductService } from "./product.service";
 
 @Controller('/product')
@@ -13,21 +14,21 @@ export class ProductController {
 
     @Post()
     addProduct(@Req() req: Request) {
-        return req.body
+        return this.productService.createProduct(req);
     }
 
     @Get('/:productId')
-    getSingleProduct(@Param() params: { productId: Number }) {
-        return params
+    getSingleProduct(@Param() param: { productId: Number }) {
+        return this.productService.findProduct(param);
     }
 
     @Delete('/:productId')
-    removeProduct(@Param() params: { productId: Number }) {
-        return params
+    removeProduct(@Param() param: { productId: Number }) {
+        return this.productService.deleteProduct(param)
     }
 
     @Patch('/:productId')
-    updateProduct(@Param() params: { productId: Number }) {
-        return params
+    updateProduct(@Req() req: Request, @Param() param: { productId: number }) {
+        return this.productService.updateProduct(req, param)
     }
 }
