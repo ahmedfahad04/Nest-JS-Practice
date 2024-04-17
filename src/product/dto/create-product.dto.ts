@@ -1,4 +1,10 @@
+import { IsNumber, IsString } from "class-validator";
+
 export class CreateProductDto {
-    name: string;
-    amount: number;
+
+    @IsString()
+    product: string;
+
+    @IsNumber()
+    quantity: number;
 }
