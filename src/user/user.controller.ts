@@ -16,7 +16,7 @@ export class UserController {
 
     @Get('/:userId')
     getSingleUser(@Param('userId', ParseUUIDPipe) userId: number) {
-        return this.userService.findOneUser(userId)
+        return this.userService.findById(userId)
     }
 
     @Post()
