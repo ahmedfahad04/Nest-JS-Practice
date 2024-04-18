@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -8,7 +8,7 @@ export class ProfileController {
 
     @UseGuards(AuthGuard('jwt'))
     @Get()
-    getProfile() {
-        return { message: 'This is my profile (protected route)' }
+    getProfile(@Request() req: any) {
+        return { message: 'This is my profile (protected route)', user: req.user }
     }
 }

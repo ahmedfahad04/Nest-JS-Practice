@@ -11,7 +11,7 @@ import { LocalStrategy } from './local.strategy';
 @Module({
     imports: [UserModule, PassportModule, JwtModule.register({
         secret: jwtConstants.secret,
-        signOptions: { expiresIn: '60s' },
+        signOptions: { expiresIn: '60m' },
     })],  // we link the user module with auth module
     controllers: [AuthController],
     exports: [AuthService],
