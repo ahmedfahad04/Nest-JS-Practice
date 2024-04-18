@@ -11,6 +11,7 @@ async function bootstrap() {
   );    //! whitelist will include only those fields that are present in DTO
   app.useGlobalFilters(new QueryFailedFilter());
 
+  // swager initialization
   const options: SwaggerDocumentOptions =  {
     operationIdFactory: (
       controllerKey: string,
@@ -18,7 +19,6 @@ async function bootstrap() {
     ) => methodKey
   };
 
-  // swager initialization
   const config = new DocumentBuilder()
     .setTitle('Basic NestJS App')
     .setDescription('Auth Api Description')
