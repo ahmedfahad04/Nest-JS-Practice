@@ -1,12 +1,11 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from "./app.controller";
 import { AuthModule } from './auth/auth.module';
 import { Product } from "./product/entity/product.entity";
 import { ProductModule } from "./product/product.module";
+import { ProfileModule } from './profile/profile.module';
 import { User } from "./user/entity/user.entity";
 import { UserModule } from './user/user.module';
-import { ProfileModule } from './profile/profile.module';
 
 
 @Module({
@@ -20,6 +19,5 @@ import { ProfileModule } from './profile/profile.module';
         entities: [Product, User],  //! must add the new Entity 
         synchronize: true,          //! before production, it MUST be REMOVED
     }), AuthModule, ProfileModule],
-    controllers: [AppController]
 })
 export class AppModule { }
